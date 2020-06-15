@@ -1,0 +1,63 @@
+@charset "utf-8";
+html,body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,img,div,dl,dt,dd{margin:0;padding:0;border:0;font-family:"微软雅黑";}
+select,input{vertical-align:middle;font-size:12px;}
+table,tr,td,th{margin:0;font-family:"微软雅黑"}
+textarea,td,div,input{font-size:12px;}
+body{font-size:12px;background:#ffffff; color:#333333; padding:0 0 15px 0;}
+HTML
+{
+   overflow-x:hidden;
+   overflow-y:auto;
+}
+ul,ol,li{list-style:none; }
+.sh10{height:10px;background:#fff;overflow:hidden;font-size:0;}
+.mar10{margin-right:10px;}
+.mal10{margin-left:10px;}
+.mat20{margin-top:20px;}
+.none { display: none;}
+.block {display: block;}
+.nonebor{border:0;}
+img{display:block;}
+.clear{clear:both;font-size:0;line-height:0;height:0;}
+a{outline: none;text-decoration: none;color:#000;}
+a:hover{text-decoration: none; color:#0099cc;}
+
+.title{    width: 816px;
+    height: 84px;
+    margin-left: 56px}
+.title img{ width:1200px; height:100%}
+
+
+.nav_bg{ width:100%; height:40px; background-color: #016ce6;}
+.nav{ margin:0 auto; height:40px; line-height:40px;width:1200px; }
+.nav ul li{ width:106px; float:left; height:40px; line-height:40px; text-align:center; font-size:14px; font-weight:bold; color:#fff; }
+.nav ul li.no{ background-image:none;}
+.nav ul li a{width:105px; font-size:14px; font-weight:bold; color:#fff; display:block;}
+.nav ul li a:hover{ background-color:#fff; color: #000;}
+
+.banner{ width:1200px;margin:0 auto }
+.banner img{ width:1200px; height:400px}
+
+.select{float: left;  width:250px;  font-size: 14px;  margin-left: 60px; padding-left: 5px; height: 30px; line-height: 30px; border:1px solid #777; border-radius: 3px;}
+.search{ width:100%; margin-top: 10px; }
+.search span{ float: right;  margin-left: 10px; margin-top:8px; font-size: 14px; }
+.search input { float: right; width:250px; font-size: 14px;  margin-left: 10px; padding-left: 5px; height: 30px; line-height: 30px; border:1px solid #777; border-radius: 3px;}
+.search a.search-btn{ float: right; margin-left: 10px; width:60px; height: 34px; display: block; font-size: 14px; color: #fff; background-color: #016ce6; line-height: 34px; text-align: center; border-radius: 3px;}
+.cars{width:100%;margin-left: 60px;  padding-left:60px;padding-top:50px; padding-bottom:200px; }
+.carInfo{ width:45%; float: left; margin-top: 20px;}
+.img{ width:200px; float: left;}
+.img img{width:100%}
+.content{ float: left; margin-left: 15px;}
+.content p{ font-size: 16px; line-height: 30px;}
+.content span.price{ height: 30px; line-height: 30px; display: block; font-size: 14px; color: #c00;;}
+.content a{ width:60px; height: 30px; display: block; font-size: 14px; color: #fff; background-color: #f7931e; line-height: 30px; text-align: center; border-radius: 3px;}
+.below{width:100%; height:40px; background-color: #016ce6;}
+
+
+        
+
+
+
+
+
+

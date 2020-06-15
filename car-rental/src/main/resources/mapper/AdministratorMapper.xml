@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rental.dao.AdministratorMapper">
+  <resultMap id="BaseResultMap" type="com.rental.bean.Administrator">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="INTEGER" property="password" />
+  </resultMap>
+
+  
+  <select id="selectAllByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    
+    select * from t_administrator where name = #{name,jdbcType=VARCHAR}
+
+  </select>
+  
+  <select id="selectAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+    
+    select * from t_administrator
+
+  </select>
+  
+  
+</mapper>

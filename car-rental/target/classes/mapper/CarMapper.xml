@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rental.dao.CarMapper">
+  <resultMap id="BaseResultMap" type="com.rental.bean.Car">
+    <id column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="cname" jdbcType="VARCHAR" property="cname" />
+    <result column="cride" jdbcType="INTEGER" property="cride" />
+    <result column="dayr" jdbcType="INTEGER" property="dayr" />
+    <result column="imgadd" jdbcType="VARCHAR" property="imgadd" />
+  </resultMap>
+  
+  <resultMap id="BaseResultMapAttrib" type="com.rental.bean.Car">
+    <id column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="cname" jdbcType="VARCHAR" property="cname" />
+    <result column="cride" jdbcType="INTEGER" property="cride" />
+    <result column="dayr" jdbcType="INTEGER" property="dayr" />
+    <result column="imgadd" jdbcType="VARCHAR" property="imgadd" />
+    <result column="block" jdbcType="VARCHAR" property="block" />
+    <result column="duration" jdbcType="INTEGER" property="duration" />
+    <result column="remaining" jdbcType="INTEGER" property="remaining" />    
+  </resultMap>
+  
+  
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    cid, cname, cride, dayr, imgadd
+  </sql>
+  <select id="selectByExample" parameterType="com.rental.bean.CarExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_car
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  
+  
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMapAttrib">
+    
+    select * from t_car where cname = #{cname,jdbcType=VARCHAR}
+    
+  </select>
+  
+  <select id="selectCars" resultMap="BaseResultMapAttrib">
+    
+    select * from t_car
+    
+  </select>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    *
+    from t_car
+    where cid = #{cid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_car
+    where cid = #{cid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.rental.bean.CarExample">
+    delete from t_car
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.rental.bean.Car">
+    insert into t_car (cid, cname, cride, 
+      dayr, imgadd, block,duration ,remaining)
+    values (#{cid,jdbcType=INTEGER}, #{cname,jdbcType=VARCHAR}, #{cride,jdbcType=INTEGER}, 
+      #{dayr,jdbcType=INTEGER}, #{imgadd,jdbcType=VARCHAR},
+       #{block,jdbcType=VARCHAR},#{duration,jdbcType=INTEGER}, #{remaining,jdbcType=INTEGER}
+      )
+  </insert>
+  
+  <select id="countByExample" parameterType="com.rental.bean.CarExample" resultType="java.lang.Long">
+    select count(*) from t_car
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  
+  <select id="searchCar" resultMap="BaseResultMapAttrib">
+    select * from t_car
+    where
+      cname like '%${date}%'
+  </select>
+  
+  <update id="updateRemaining">
+    update t_car
+    set remaining = #{remaining}
+    where cid = #{cid}
+  </update>
+  
+</mapper>

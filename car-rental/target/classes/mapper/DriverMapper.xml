@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rental.dao.DriverMapper">   
+  <resultMap id="BaseResultMap" type="com.rental.bean.Driver">
+    <id column="username" jdbcType="INTEGER" property="username" /> 
+    <result column="bdriver" jdbcType="VARCHAR" property="bdriver" />   
+    <result column="rdriver" jdbcType="VARCHAR" property="rdriver" />
+    <result column="flag" jdbcType="VARCHAR" property="flag" />
+  </resultMap>
+  
+
+	
+
+  <insert id="insertDriver" parameterType="com.rental.bean.Driver">
+    insert into t_driver (username, bdriver, rdriver, flag)
+    values (#{username,jdbcType=VARCHAR}, #{bdriver,jdbcType=VARCHAR},
+    		#{rdriver,jdbcType=VARCHAR},#{flag,jdbcType=VARCHAR})
+  </insert>
+  
+  
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select * from t_driver where username = #{username,jdbcType=VARCHAR}
+   </select>
+   
+   <select id="selectAll" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select * from t_driver where flag = #{flag,jdbcType=VARCHAR} 
+   </select>
+   
+   <update id="updateFlag">
+  	 update t_driver
+    set flag = #{i}
+    where username = #{name}
+  </update>
+  
+   <delete id="deleteDriver" parameterType="java.lang.String">
+    delete from t_driver
+    where username = #{username,jdbcType=VARCHAR}
+  </delete>
+   
+   
+</mapper>

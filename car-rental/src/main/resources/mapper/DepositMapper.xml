@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rental.dao.DepositMapper">
+  <resultMap id="BaseResultMap" type="com.rental.bean.Deposit">
+    <id column="did" jdbcType="INTEGER" property="did" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="money" jdbcType="INTEGER" property="money" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+  </resultMap>
+ 
+  
+  <select id="selectAllDeposit" resultMap="BaseResultMap">
+    
+    select * from t_deposit
+    
+  </select>
+  
+  <insert id="insertDeposit" parameterType="com.rental.bean.Deposit">
+  		insert into t_deposit (username,money,flag)
+    	values (#{username,jdbcType=VARCHAR}, #{money,jdbcType=INTEGER}, #{flag,jdbcType=VARCHAR})
+  </insert>
+  
+  
+  <select id="selectDeposit" parameterType="int" resultMap="BaseResultMap">
+    
+    select * from t_deposit where did = #{did}
+    
+  </select>
+  
+
+  <update id="updateFlage">
+  	 update t_deposit
+    set flag = #{flag}
+    where did = #{did}
+  </update>
+  
+  
+  <delete id="deleteName">
+  	delete from t_deposit where username = #{username}
+  </delete>
+  
+  
+</mapper>
